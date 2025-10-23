@@ -2,7 +2,7 @@ services: # Root key indicating the start of the service definitions list.
   - type: web # Declares this entry as a web service, designed to handle HTTP traffic.
     name: n8n-video-highlights # Assigns a unique name to this service (used for the Render URL).
     runtime: docker # Specifies that Render should build and run this service using a Docker container.
-    repo: https://github.com/your-username/your-repo # Provides the URL of the Git repository where the source code and Dockerfile reside.
+    repo: ps://github.com/Tejas2507/n8n-Render # Provides the URL of the Git repository where the source code and Dockerfile reside.
     branch: main # Designates the specific Git branch that Render should pull code from for deployments.
     dockerfilePath: ./Dockerfile # Specifies the relative path within the repository to find the Dockerfile used for building the image.
     plan: starter # Selects the compute resources (CPU/RAM) and pricing tier for this service (requires a paid plan for disks).
