@@ -1,0 +1,19 @@
+services: # Root key indicating the start of the service definitions list.
+  - type: web # Declares this entry as a web service, designed to handle HTTP traffic.
+    name: your-service-name # Assigns a unique name to this service (used for the Render URL).
+    runtime: docker # Specifies that Render should build and run this service using a Docker container.
+    repo: https://github.com/your-username/your-repo # Provides the URL of the Git repository where the source code and Dockerfile reside.
+    branch: main # Designates the specific Git branch that Render should pull code from for deployments.
+    dockerfilePath: ./Dockerfile # Specifies the relative path within the repository to find the Dockerfile used for building the image.
+    plan: starter # Selects the compute resources (CPU/RAM) and pricing tier for this service (requires a paid plan for disks).
+    envVars: # Begins the section for defining environment variables to be injected into the running container.
+      - key: N8N_SECURE_COOKIE # Defines the name (key) for the first environment variable.
+        value: false # Sets the value for the N8N_SECURE_COOKIE variable (allowing HTTP access).
+      - key: GENERIC_TIMEZONE # Defines the name (key) for the timezone environment variable.
+        value: Asia/Kolkata # Sets the value for the GENERIC_TIMEZONE variable.
+      - key: WEBHOOK_URL # Defines the name (key) for the public webhook URL environment variable.
+        value: YOUR_RENDER_SERVICE_URL # Sets the value to the actual public URL Render provides for this service.
+    disks: # Begins the section for defining persistent storage disks attached to the service.
+      - name: automation-data # Assigns a name to this persistent disk resource.
+        mountPath: /automation # Specifies the directory path inside the container where this disk will be mounted and accessible.
+        sizeGB: 10 # Defines the storage capacity allocated for this persistent disk in gigabytes.
